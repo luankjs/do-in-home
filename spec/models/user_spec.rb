@@ -7,6 +7,8 @@ RSpec.describe User, type: :model do
 
   describe "#email" do
     it { should validate_presence_of :email }
+
+    it { should_not allow_value("invalid email").for(:email) }
   end
 
   describe "#phone" do
@@ -24,7 +26,7 @@ RSpec.describe User, type: :model do
       expect(user).to be_a_valid(User)
     end
 
-    it "should return an exception" do
+    it "should returns an exception" do
       expect {
         FactoryGirl.create(:user, name: "", email: "", phone: "", is_admin: nil)
       }.to raise_error ActiveRecord::RecordInvalid
