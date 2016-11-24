@@ -15,10 +15,6 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :phone }
   end
 
-  describe "#is_admin" do
-    it { should validate_presence_of :is_admin }
-  end
-
   describe "testing validations" do
     it "should create User" do
       user = FactoryGirl.create(:user, is_admin: true)

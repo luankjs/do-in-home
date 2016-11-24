@@ -2,6 +2,15 @@ pt-BR:
 
   activerecord:
     attributes:
+      task:
+        title: "Título"
+        description: "Descrição"
+        status: "Status"
+        difficulty: "Dificuldade"
+        close_date: "Data de conclusão"
+        close_limit_date: "Data Limite de Conclusão"
+        user_id: "Usuário Responsável"
+
       user:
         name: "Nome"
         email: "E-mail"
@@ -9,4 +18,5 @@ pt-BR:
         phone: "Telefone"
         is_admin: "Admin?"
     models:
+      task: "Tarefa"
       user: "Usuário"
