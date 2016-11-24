@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124040825) do
+ActiveRecord::Schema.define(version: 20161124224819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20161124040825) do
   create_table "scores", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "task_id"
-    t.integer  "score"
+    t.integer  "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_scores_on_task_id", using: :btree

@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :score do
     user nil
     task nil
-    score 1
+    points 1
   end
 end
