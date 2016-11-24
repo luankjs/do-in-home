@@ -4,5 +4,6 @@ FactoryGirl.define do
     email "user@example.com"
     phone "(84) 99819-8816"
     is_admin "false"
+    password "senha123"
   end
 end
