@@ -12,10 +12,10 @@
   </thead>
 
   <tbody>
-    <% @scores.each do |score| %>
+    <% @ranking.each do |user| %>
       <tr>
-        <td><%= score.user.name %></td>
-        <td><%= score.points %></td
+        <td><%= user.name %></td>
+        <td><%= user.points %></td
       </tr>
     <% end %>
   </tbody>

@@ -15,11 +15,13 @@ RSpec.describe TasksController, type: :controller do
     }
   }
 
-  let(:invalid_attributes) {
-    { title: "" }
-  }
+  let(:invalid_attributes) { { title: "" } }
 
   let(:valid_session) { {} }
+
+  before do
+    sign_in user
+  end
 
   describe "GET #index" do
     it "assigns all tasks as @tasks" do
@@ -87,9 +89,7 @@ RSpec.describe TasksController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        { title: "New Title" }
-      }
+      let(:new_attributes) { { title: "New Title" } }
 
       let(:user_2) { FactoryGirl.create(:user) }
 
@@ -172,5 +172,4 @@ RSpec.describe TasksController, type: :controller do
       expect(response).to redirect_to(tasks_url)
     end
   end
-
 end

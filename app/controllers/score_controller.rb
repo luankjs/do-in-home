@@ -1,6 +1,7 @@
 class ScoreController < ApplicationController
   def index
-    # @scores = Score.all(:group => "user_id", :order => "created_at")
-    @scores = Score.group("user_id").select("user_id, SUM(points) as points").order("points DESC")
+    @ranking = User.joins(:scores)
+                    .select('users.id, users.name, sum(scores.points) as points').group(:id)
+                    .order('points DESC')
   end
 end
