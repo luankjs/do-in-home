@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>Scores</h1>
 
 <table>
   <thead>
     <tr>
       <th>User</th>
-      <th>Task</th>
       <th>Points</th>
-      <th>Date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,14 +15,8 @@
     <% @scores.each do |score| %>
       <tr>
         <td><%= score.user.name %></td>
-        <td><%= score.task.title %></td>
-        <td><%= score.points %></td>
-        <td><%= score.created_at %></td>
+        <td><%= score.points %></td
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
