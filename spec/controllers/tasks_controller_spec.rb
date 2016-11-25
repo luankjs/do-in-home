@@ -128,6 +128,36 @@ RSpec.describe TasksController, type: :controller do
     end
   end
 
+  describe "PUT #conclude" do
+    before(:each) do
+      @user = FactoryGirl.create(:user, email: "email@user.com")
+      @task = FactoryGirl.create(:task,
+        status: 0, close_limit_date: Date.today+2.days,
+        difficulty: 2, user: @user)
+    end
+
+    it "assigns the task status is changed" do
+      put :conclude, params: { id: @task.to_param }, session: valid_session
+
+      expect(assigns(:task).status).to eq(1)
+    end
+
+    it "assigns creation of new score" do
+      expect {
+        put :conclude, params: { id: @task.to_param }, session: valid_session
+       }.to change(Score, :count).by(1)
+    end
+
+    it "assigns the correct pontuation to User" do
+      old_scores_sum_to_user = Score.where(user: @user).sum(:points)
+      put :conclude, params: { id: @task.to_param }, session: valid_session
+      new_scores_sum_to_user = Score.where(user: @user).sum(:points)
+      diff_between_scores_sum = new_scores_sum_to_user - old_scores_sum_to_user
+
+      expect(diff_between_scores_sum).to eq(30)
+    end
+  end
+
   describe "DELETE #destroy" do
     it "destroys the requested task" do
       task = FactoryGirl.create(:task)

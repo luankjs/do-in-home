@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :conclude]
 
   def index
     @tasks = Task.all
@@ -35,6 +35,10 @@ class TasksController < ApplicationController
         format.html { render :edit }
       end
     end
+  end
+
+  def conclude
+    @task.update_attribute(:status, 1)
   end
 
   def destroy
