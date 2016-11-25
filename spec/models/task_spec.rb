@@ -29,10 +29,8 @@ RSpec.describe Task, type: :model do
     it { should validate_presence_of :close_limit_date }
   end
 
-  describe "#user_id" do
-    it { should validate_presence_of :user_id }
-
-    it { should validate_numericality_of :user_id }
+  describe "#user" do
+    it { should validate_presence_of :user }
   end
 
   describe "associations" do

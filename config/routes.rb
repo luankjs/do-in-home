@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root 'home_controller#index'
 
   resources :users
+  resources :tasks
 end
